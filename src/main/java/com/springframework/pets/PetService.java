@@ -1,4 +1,4 @@
-package medvedev.guru.springframework.sfgdi.services;
+package com.springframework.pets;
 
 /**
  * @author Denis Medvedev
