@@ -1,16 +1,31 @@
 package medvedev.guru.springframework.sfgdi.config;
 
-import medvedev.guru.springframework.sfgdi.services.ConstructorGreetingService;
-import medvedev.guru.springframework.sfgdi.services.PropertyInjectedGreetingService;
-import medvedev.guru.springframework.sfgdi.services.SetterInjectedGreetingService;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
+import medvedev.guru.springframework.sfgdi.services.*;
+import org.springframework.context.annotation.*;
 
 /**
  * @author Denis Medvedev
  */
 @Configuration
 public class GreetingServiceConfig {
+
+    @Profile({"ES", "default"})
+    @Bean("i18nService")
+    I18NSpanishService i18NSpanishService() {
+        return new I18NSpanishService();
+    }
+
+    @Profile("EN")
+    @Bean
+    I18nEnglishGreetingService i18nService() {
+        return new I18nEnglishGreetingService();
+    }
+
+    @Primary
+    @Bean
+    PrimaryGreetingService primaryGreetingService() {
+        return new PrimaryGreetingService();
+    }
 
     @Bean
     ConstructorGreetingService constructorGreetingService() {
