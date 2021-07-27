@@ -10,6 +10,7 @@ import org.springframework.context.annotation.*;
 /**
  * @author Denis Medvedev
  */
+@ImportResource("classpath:sfgdi-config.xml")
 @Configuration
 public class GreetingServiceConfig {
 
@@ -53,10 +54,7 @@ public class GreetingServiceConfig {
         return new PrimaryGreetingService();
     }
 
-    @Bean
-    ConstructorGreetingService constructorGreetingService() {
-        return new ConstructorGreetingService();
-    }
+
 
     @Bean
     PropertyInjectedGreetingService propertyInjectedGreetingService() {
